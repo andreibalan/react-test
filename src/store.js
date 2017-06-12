@@ -2,7 +2,7 @@ import {applyMiddleware, createStore, compose} from "redux";
 import {routerMiddleware} from "react-router-redux";
 import {reactReduxFirebase} from "react-redux-firebase";
 import createHistory from "history/createBrowserHistory";
-//import logger from "redux-logger";
+import logger from "redux-logger";
 import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
 import reducer from "./reducers";
@@ -18,7 +18,7 @@ const firebaseProfileConfig = {
 };
 
 const internalHistory = createHistory();
-const middleware = applyMiddleware(promise(), thunk, routerMiddleware(internalHistory));
+const middleware = applyMiddleware(promise(), thunk, routerMiddleware(internalHistory), logger);
 const createComposeStore = compose(reactReduxFirebase(Firebase.Config, firebaseProfileConfig))(createStore);
 
 export const store = createComposeStore(reducer, middleware), history = internalHistory;
