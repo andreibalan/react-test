@@ -288,7 +288,7 @@ export default class Login extends Component {
 
                             <Paragraf leftIcon="address-card" className="link">
                                 <span onClick={() => this.setState({
-                                    username: "stringedge@gmail.com",
+                                    username: "react@test.com",
                                     password: "qwerty"
                                 })}>
                                     <Translate value="login.demo"/>
