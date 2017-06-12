@@ -1,4 +1,5 @@
-#React App Test
+React App Test
+-------------
 
 Test Credentials:
 
