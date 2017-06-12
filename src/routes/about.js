@@ -7,10 +7,10 @@ import {NavLink, Route, Switch} from "react-router-dom";
 import Index from "./about/index";
 import Page from "./about/page";
 import {isEmpty} from "../utils/general";
-import {firebaseConnect, isLoaded, dataToJS, populatedDataToJS, pathToJS} from "react-redux-firebase";
+import {firebaseConnect, isLoaded, dataToJS} from "react-redux-firebase";
 import NProgress from "react-nprogress";
 import Message from "../components/message";
-import {Translate, I18n} from "react-redux-i18n";
+import {Translate} from "react-redux-i18n";
 
 @protectedRoute
 @firebaseConnect((props) => [`/pages#orderByChild=public&equalTo=false`])

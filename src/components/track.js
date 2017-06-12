@@ -32,7 +32,7 @@ export default class Track extends Component {
 
         return (
             <div className={classes}>
-                <div className="picture">{!isEmpty(albumart) ? <img src={albumart}/> :
+                <div className="picture">{!isEmpty(albumart) ? <img role="presentation" src={albumart}/> :
                     <FontAwesome className="placeholder" name="music"/>}</div>
                 <div className="content">
                     <div className="container">

@@ -2,7 +2,7 @@ import React, {Component} from "react";
 import {connect} from "react-redux";
 import {protectedRoute} from "../../utils/wrapper";
 import Message from "../../components/message";
-import {Translate, I18n} from "react-redux-i18n";
+import {Translate} from "react-redux-i18n";
 
 @protectedRoute
 @connect()

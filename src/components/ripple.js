@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import {Component} from "react";
 import {findDOMNode} from "react-dom";
 import {isEmpty} from "../utils/general";
 import $ from "jquery";
@@ -75,7 +75,7 @@ export default class Ripple extends Component {
         let y = e.pageY - el.offset().top - r;
 
         if (rippleRound) {
-            r = r * 1.5;
+            r *= 1.5;
             const centerPoint = this.rippleCenterPoint();
 
             if (!isEmpty(centerPoint)) {

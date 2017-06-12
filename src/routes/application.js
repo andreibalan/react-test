@@ -17,7 +17,7 @@ import {firebaseConnect, isLoaded, dataToJS, populatedDataToJS, pathToJS} from "
 import {isEmpty} from "../utils/general";
 import {routerActions} from "react-router-redux";
 import NProgress from "react-nprogress";
-import {Translate, I18n} from "react-redux-i18n";
+import {Translate} from "react-redux-i18n";
 
 @connect(({application, firebase}) => ({
     authError: pathToJS(firebase, 'authError'),

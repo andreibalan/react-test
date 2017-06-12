@@ -1,8 +1,6 @@
 import React, {Component} from "react";
 import Track from "../components/track";
 import Section from "../components/section";
-import {NavLink} from "react-router-dom";
-import {Translate, I18n, setLocale} from "react-redux-i18n";
 import {connect} from "react-redux";
 import {protectedRoute} from "../utils/wrapper";
 import {changeRouteInfo} from "../actions/application";
