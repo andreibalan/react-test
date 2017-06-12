@@ -336,19 +336,6 @@ buck-out/
 
 # .nfs files are created when an open file is removed but is still being accessed
 
-### Web ###
-*.asp
-*.cer
-*.csr
-*.css
-*.htm
-*.html
-*.js
-*.jsp
-*.php
-*.rss
-*.xhtml
-
 ### WebStorm ###
 # Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm, CLion, Android Studio and Webstorm
 # Reference: https://intellij-support.jetbrains.com/hc/en-us/articles/206544839
@@ -421,5 +408,4 @@ $RECYCLE.BIN/
 
 # misc
 .DS_Store
-.env
 npm-debug.log
