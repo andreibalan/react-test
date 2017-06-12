@@ -1,0 +1,36 @@
+$color-primary: #ffffff;
+$color-highlight: #ffffff;
+$color-separator: rgba(255, 255, 255, 0.18);
+$color-text: #ffffff;
+$color-text-title: #ffffff;
+$color-text-faded: #898989;
+$color-text-dark: #ffffff;
+$color-notice: #ca0219;
+
+$color-background: #000000;
+
+body {
+  background-color: $color-background !important;
+}
+
+* {
+  color: inherit;
+}
+
+a {
+  color: inherit !important;
+}
+
+.color {
+  &.primary {
+    color: $color-primary !important;
+  }
+
+  &.highlight {
+    color: $color-highlight !important;
+  }
+
+  &.notice {
+    color: $color-notice !important;
+  }
+}

@@ -1,0 +1,97 @@
+$progress-bubble-size: 10px * $size-scale;
+
+$progress-bar-color: #ffffff;
+$progress-bar-size: 8px * $size-scale;
+$progress-bar-gap: 2px * $size-scale;
+
+$progress-bar-min-height: 3px * $size-scale;
+$progress-bar-max-height: 50px * $size-scale;
+
+
+@keyframes sound {
+  0% {
+    opacity: 0.35;
+    height: $progress-bar-min-height;
+  }
+  100% {
+    opacity: 0.8;
+    height: $progress-bar-max-height * 0.75;
+  }
+}
+
+.progress {
+  position: relative;
+  display: block;
+  text-align: center;
+
+  width: $progress-bar-max-height;
+  height: $progress-bar-max-height;
+
+  margin-bottom: 0;
+  border-radius: 0;
+  background-color: transparent;
+
+  @include flex-container();
+  @include flex-direction(row);
+  @include flex-align-items(flex-end);
+
+  > .bar {
+    @include flex-size(1);
+    background: $progress-bar-color;
+    bottom: 1px;
+    height: 3px;
+    position: relative;
+
+    animation: sound 0ms -800ms linear infinite alternate;
+    will-change: transform;
+
+    &:hover {
+      animation: none;
+    }
+
+    &:not(:last-of-type) {
+      margin-right: $progress-bar-gap;
+    }
+
+    &:nth-child(1) {
+      animation-duration: 474ms;
+    }
+
+    &:nth-child(2) {
+      animation-duration: 433ms;
+    }
+
+    &:nth-child(3) {
+      animation-duration: 407ms;
+    }
+
+    &:nth-child(4) {
+      animation-duration: 458ms;
+    }
+
+    &:nth-child(5) {
+      animation-duration: 400ms;
+    }
+
+    &:nth-child(6) {
+      animation-duration: 427ms;
+    }
+
+    &:nth-child(7) {
+      animation-duration: 441ms;
+    }
+
+    &:nth-child(8) {
+      animation-duration: 419ms;
+    }
+
+    &:nth-child(9) {
+      animation-duration: 487ms;
+    }
+
+    &:nth-child(10) {
+      animation-duration: 442ms;
+    }
+  }
+
+}

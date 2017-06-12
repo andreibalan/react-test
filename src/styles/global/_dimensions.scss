@@ -1,0 +1,6 @@
+// General Scale Factor - This needs to be used with all dimensions in order for the scaling to work.
+$size-scale: 1;
+
+// General
+$border-size: 1px * $size-scale;
+$padding: 30px * $size-scale;

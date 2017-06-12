@@ -1,0 +1,163 @@
+@mixin background-image($image, $retinaImage, $backgroundSize, $backgroundSizeRetina, $repeat, $position) {
+  background-size: $backgroundSize;
+  background-image: url($image);
+  background-repeat: $repeat;
+  background-position: $position;
+
+  @media (min--moz-device-pixel-ratio: 1.3),
+  (-o-min-device-pixel-ratio: 2.6/2),
+  (-webkit-min-device-pixel-ratio: 1.3),
+  (min-device-pixel-ratio: 1.3),
+  (min-resolution: 1.3dppx) {
+    background-size: $backgroundSizeRetina;
+    background-image: url($retinaImage);
+  }
+}
+
+@mixin transition($property, $duration, $function) {
+  //-webkit-backface-visibility: hidden;
+  -webkit-transform-style: preserve-3d;
+  -webkit-transition: $property $duration $function;
+  -moz-transition: $property $duration $function;
+  -ms-transition: $property $duration $function;
+  -o-transition: $property $duration $function;
+  transition: $property $duration $function;
+}
+
+@mixin transitionDelay($time) {
+  -webkit-transition-delay: $time;
+  -moz-transition-delay: $time;
+  -ms-transition-delay: $time;
+  -o-transition-delay: $time;
+  transition-delay: $time;
+}
+
+@mixin transform($transform) {
+  -moz-transform: $transform;
+  -webkit-transform: $transform;
+  -o-transform: $transform;
+  -ms-transform: $transform;
+  transform: $transform;
+}
+
+@mixin animation($animation) {
+  -webkit-animation: $animation;
+  -moz-animation: $animation;
+  -ms-animation: $animation;
+  -o-animation: $animation;
+  animation: $animation;
+}
+
+@mixin transitionFix() {
+  -webkit-backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  -moz-transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+@mixin box-shadow($top, $left, $blur, $opacity, $inset: false, $spread: 0) {
+  @if $inset {
+    -webkit-box-shadow: inset $top $left $blur $spread rgba(0, 0, 0, $opacity);
+    -moz-box-shadow: inset $top $left $blur $spread rgba(0, 0, 0, $opacity);
+    box-shadow: inset $top $left $blur $spread rgba(0, 0, 0, $opacity);
+  } @else {
+    -webkit-box-shadow: $top $left $blur $spread rgba(0, 0, 0, $opacity);
+    -moz-box-shadow: $top $left $blur $spread rgba(0, 0, 0, $opacity);
+    box-shadow: $top $left $blur $spread rgba(0, 0, 0, $opacity);
+  }
+}
+
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  border-radius: $radius;
+}
+
+@mixin disable-select() {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@mixin disable-scrollbar() {
+
+}
+
+@mixin linear-gradient($top, $bottom) {
+  background: $top; /* Old browsers */
+  background: -moz-linear-gradient(top, $top 0%, $bottom 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, $top), color-stop(100%, $bottom)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, $top 0%, $bottom 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, $top 0%, $bottom 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, $top 0%, $bottom 100%); /* IE10+ */
+  background: linear-gradient(to bottom, $top 0%, $bottom 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#000000', GradientType=0); /* IE6-9 */
+}
+
+@mixin qq( $number, $comparison: 'equal' ) {
+  $nth: '';
+
+  @if index(('greater' 'more' '>'), $comparison) {
+    $nth: 'n + #{$number}';
+  } @else if index(('less' 'fewer' '<'), $comparison) {
+    $nth: '-n + #{$number}';
+  } @else if index(('equal' 'same' '='), $comparison) {
+    $nth: $number;
+  } @else {
+    @warn "Sorry, that's an invalid $comparison value."
+  }
+
+  &:nth-last-child(#{$nth}):first-child {
+    &,
+    & ~ * {
+      @content;
+    }
+  }
+}
+
+@mixin scrollbars($size, $foreground-color, $background-color: mix($foreground-color, white,  50%)) {
+  // For Google Chrome
+  ::-webkit-scrollbar {
+    width: $size;
+    height: $size;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $foreground-color;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $background-color;
+  }
+
+  // For Internet Explorer
+  body {
+    scrollbar-face-color: $foreground-color;
+    scrollbar-track-color: $background-color;
+  }
+}
+
+@function photoshopPTSize($size) {
+  @return ($size / 96) * 72;
+}
+
+@mixin truncate() {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@mixin breakpoint-height($value) {
+  // If $str is still an empty string, no media query is needed
+  @if $value == '' {
+    @content;
+  }
+
+    // Otherwise, wrap the content in a media query
+  @else {
+    @media screen and #{$value} {
+      @content;
+    }
+  }
+}

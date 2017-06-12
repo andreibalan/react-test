@@ -1,0 +1,67 @@
+// Font Imports
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,300,700);
+
+// Font Dimensions
+$font-size-xsmall: 10pt * $size-scale;
+$font-size-small: photoshopPTSize(12.5pt) * $size-scale;
+$font-size-medium: photoshopPTSize(14pt) * $size-scale;
+$font-size-large: photoshopPTSize(16pt) * $size-scale;
+$font-size-xlarge: photoshopPTSize(19pt) * $size-scale;
+$font-size-xxlarge: photoshopPTSize(25pt) * $size-scale;
+$font-size-xxxlarge: photoshopPTSize(32pt) * $size-scale;
+
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-bold: 700;
+
+* {
+  font-size: $font-size-medium;
+  font-weight: $font-weight-normal;
+  line-height: 1em;
+}
+
+// Utility Classes
+.font-xsmall {
+  font-size: $font-size-xsmall;
+}
+
+.font-small {
+  font-size: $font-size-small;
+}
+
+.font-medium {
+  font-size: $font-size-medium;
+}
+
+.font-large {
+  font-size: $font-size-large;
+}
+
+.font-xlarge {
+  font-size: $font-size-xlarge;
+}
+
+.font-xxlarge {
+  font-size: $font-size-xxlarge;
+}
+
+.font-xxxlarge {
+  font-size: $font-size-xxxlarge;
+}
+
+.font-light {
+  font-weight: $font-weight-light;
+}
+
+.font-normal {
+  font-weight: $font-weight-normal;
+}
+
+.font-bold {
+  font-weight: $font-weight-bold;
+}
+
+.font-title {
+  font-size: $font-size-large * 1.1;
+  padding-bottom: 8px * $size-scale;
+}

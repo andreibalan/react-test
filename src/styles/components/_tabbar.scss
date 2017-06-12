@@ -1,0 +1,80 @@
+$tabbar-tab-font-size: $font-size-medium;
+$tabbar-tab-padding: $padding;
+$tabbar-tab-line-height: 4px * $size-scale;
+$tabbar-fade-size: 130px * $size-scale;
+
+.tabbar {
+  position: relative;
+  @include flex-size(1);
+
+  @include flex-container();
+  @include flex-direction(row);
+  @include flex-align-items(bottom);
+
+  min-height: ($tabbar-tab-padding * 0.8) * 2 + $tabbar-tab-font-size;
+
+  &.fade-left::before {
+    opacity: 1;
+  }
+
+  &.fade-right::after {
+    opacity: 1;
+  }
+
+  .ps-container {
+    position: absolute;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    > .ps-scrollbar-x-rail, > .ps-scrollbar-y-rail {
+      display: none;
+    }
+  }
+
+  > .ps-container {
+    > .list {
+      position: relative;
+      white-space: nowrap;
+
+      //padding-right: $padding;
+      //padding-left: $padding;
+
+      > a {
+        position: relative;
+        display: inline-block;
+        text-transform: uppercase;
+        font-size: $tabbar-tab-font-size;
+        font-weight: bold;
+        opacity: 0.5;
+
+        padding: $tabbar-tab-padding * 0.7 $tabbar-tab-padding;
+
+        @include transition(all, 300ms, ease-in-out);
+
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          border-bottom: $tabbar-tab-line-height solid;
+          display: none;
+        }
+
+        &:hover, &.active {
+          opacity: 1;
+        }
+
+        &.active {
+          &::after {
+            display: block;
+            height: $tabbar-tab-line-height;
+          }
+        }
+
+      }
+    }
+  }
+}

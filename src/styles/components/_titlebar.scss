@@ -1,0 +1,114 @@
+$titlebar-padding: $padding;
+$titlebar-icon-size: 25px * $size-scale;
+
+.titlebar {
+  position: relative;
+
+  &.padding {
+    padding: $titlebar-padding;
+  }
+
+  @include flex-container();
+  @include flex-direction(row);
+
+  //* {
+  //  color: inherit !important;
+  //}
+
+  &.action {
+    > .icon {
+      cursor: pointer;
+    }
+  }
+
+  > * {
+    position: relative;
+    color: inherit;
+
+    &:not(.presenter) {
+      @include flex-container();
+      @include flex-direction(row);
+      @include flex-align-items(center);
+    }
+
+    &:not(:last-of-type) {
+      margin-right: $titlebar-padding;
+    }
+  }
+
+  > .icon {
+    color: inherit;
+
+    .fa {
+      position: relative;
+      font-size: $titlebar-icon-size;
+      color: inherit;
+    }
+  }
+
+  > .presenter {
+    @include flex-container();
+    @include flex-direction(column);
+    @include flex-justify-content(center);
+
+    flex: 1 1 0%;
+    min-width: 0;
+
+    @include disable-select;
+
+    > .title {
+      position: relative;
+
+      @include breakpoint(small only) {
+        font-size: $font-size-xlarge;
+        line-height: $font-size-xlarge;
+      }
+
+      @include breakpoint(medium up) {
+        font-size: $font-size-xxxlarge;
+        line-height: $font-size-xxxlarge;
+      }
+
+      font-weight: $font-weight-bold;
+    }
+
+    > .description {
+      margin-top: 5px * $size-scale;
+      position: relative;
+    }
+  }
+
+  &:not(.presenter) {
+    > .extra {
+      @include flex-size(1);
+    }
+  }
+
+  > .extra {
+
+  }
+
+  > .info {
+
+  }
+
+  > .action {
+
+  }
+
+  &.notice {
+    position: relative;
+
+    > .presenter {
+      > .title {
+        font-size: $font-size-medium;
+        line-height: $font-size-medium;
+      }
+
+      > .description {
+        font-size: $font-size-medium;
+      }
+    }
+  }
+
+}

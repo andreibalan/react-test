@@ -1,0 +1,38 @@
+@charset "UTF-8";
+
+@import "global/utils";
+@import "global/reset";
+@import "global/dimensions";
+@import "global/fonts";
+@import "global/colors";
+@import "global/flex";
+@import "global/nprogress";
+@import "~foundation-sites/scss/foundation";
+//@import "~font-awesome/scss/font-awesome";
+//@import "node_modules/font-awesome/scss/font-awesome";
+//@import "settings";
+
+@include foundation-everything(true);
+
+@import "~perfect-scrollbar/src/css/main";
+
+@import "components/progress";
+@import "components/button";
+@import "components/button-group";
+@import "components/message";
+@import "components/info";
+@import "components/titlebar";
+@import "components/tabbar";
+@import "components/paragraf";
+@import "components/box";
+@import "components/dialog";
+@import "components/ripple";
+@import "components/input";
+@import "components/track";
+@import "components/section";
+
+@import "routes/login";
+@import "routes/about";
+@import "routes/application";
+@import "routes/index";
+@import "routes/settings";

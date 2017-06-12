@@ -1,0 +1,59 @@
+$button-padding: 10px * $size-scale;
+
+$button-label-color: rgba($color-primary, 0.5);
+$button-label-color-primary: $color-primary;
+$button-label-color-disabled: #d3d3d3;
+
+.btn {
+  @include disable-select();
+  @include clearfix;
+
+  position: relative;
+  display: inline-block;
+  font-weight: $font-weight-bold;
+  padding: $button-padding $button-padding * 1.5;
+  //color: $button-label-color;
+  text-transform: uppercase;
+  vertical-align: middle;
+  text-align: center;
+
+  opacity: 0.6;
+
+  @include border-radius(2px);
+
+  cursor: pointer;
+  @include transition(all, 300ms, ease-in-out);
+
+  &:not(.disabled) {
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+      //color: $button-label-color-primary;
+
+      opacity: 1;
+    }
+  }
+
+  &.disabled {
+    //color: $button-label-color-disabled !important;
+    cursor: auto !important;
+    opacity: 0.3;
+  }
+
+  &.primary {
+    //color: $button-label-color-primary;
+  }
+
+  &.filled {
+    background-color: $color-primary;
+    //color: $color-text-dark !important;
+  }
+
+  .icon {
+    font-size: $font-size-large;
+    vertical-align: middle;
+    text-align: center;
+    color: inherit !important;
+    margin: 0 $button-padding / 2;
+  }
+
+}

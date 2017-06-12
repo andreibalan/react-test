@@ -1,0 +1,197 @@
+$info-icon-size: 25px * $size-scale;
+$info-width: 120px * $size-scale;
+$info-spacing: 5px * $size-scale;
+
+$info-size: 50px * $size-scale;
+$info-z-index: 100;
+
+.info {
+  position: relative;
+  display: inline-block;
+
+  overflow: visible !important;
+
+  min-width: $info-size;
+  min-height: $info-size;
+
+  @include flex-size(none);
+
+  //@include flex-container();
+  //@include flex-direction(row);
+  //@include flex-align-items(center);
+  //@include flex-justify-content(center);
+
+  &.action, &.menu {
+    color: inherit !important;
+
+    > .tooltipstered > .container, > .container {
+      @include disable-select;
+      cursor: pointer;
+
+      > .labelb {
+        //opacity: 0.5;
+        @include transition(opacity, 300ms, ease-in-out);
+      }
+
+      &:hover {
+        > .labelb {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  &.opened {
+    z-index: $info-z-index + 1;
+
+    > .menu {
+      opacity: 1;
+      @include transform(scale(1));
+
+      > .section.body {
+        opacity: 1;
+        @include transform(translateY(0px));
+      }
+    }
+
+    > .tooltipstered {
+      > .container {
+        color: $color-text-faded;
+      }
+    }
+  }
+
+  &:not(.opened) {
+    > .menu {
+      pointer-events: none;
+    }
+  }
+
+  &.vertical {
+    > .tooltipstered > .container, > .container {
+      @include flex-direction(column);
+
+      > .labelb {
+        margin-top: $info-spacing;
+      }
+    }
+  }
+
+  &.horizontal {
+    > .tooltipstered > .container, > .container {
+      @include flex-direction(row);
+
+      > .labelb {
+        margin-left: $info-spacing * 2;
+      }
+    }
+  }
+
+  > .tooltipstered > .container, > .container {
+    position: relative;
+    overflow: visible !important;
+
+    padding: $info-spacing;
+
+    min-width: $info-size;
+    min-height: $info-size;
+
+    z-index: $info-z-index;
+
+    @include flex-container();
+
+    @include flex-align-items(center);
+    @include flex-justify-content(center);
+
+    > .icon {
+      position: relative;
+      font-size: $info-icon-size;
+      color: inherit;
+      @include transition(color, 300ms, ease-in-out);
+    }
+
+    > .value {
+      position: relative;
+      color: inherit;
+      font-size: $font-size-xlarge;
+      text-transform: uppercase;
+      max-width: $info-width;
+      text-align: center;
+      margin-bottom: $info-spacing;
+
+      @include transition(color, 200ms, ease-in-out);
+    }
+
+    > .labelb {
+      position: relative;
+      color: inherit;
+      font-size: $font-size-small;
+      text-transform: uppercase;
+      max-width: $info-width;
+      text-align: center;
+      word-wrap: normal;
+
+      @include transition(color, 300ms, ease-in-out);
+    }
+  }
+
+  &.menu-left {
+    > .menu {
+      left: -$info-spacing * 2;
+      transform-origin: left top;
+    }
+  }
+
+  &.menu-right {
+    > .menu {
+      right: -$info-spacing * 2;
+      transform-origin: right top;
+    }
+  }
+
+  > .menu {
+    position: absolute;
+    z-index: $info-z-index - 1;
+
+    top: 0;
+
+    min-width: 100px * $size-scale;
+    width: auto !important;
+
+    opacity: 0;
+
+    @include transition(all, 200ms, ease-in-out);
+    @include transform(scale(0.25));
+    will-change: transform;
+
+    > .section.body {
+      @include transition(all, 300ms, ease-in-out);
+      -webkit-transition-delay: 100ms;
+      transition-delay: 100ms;
+
+      opacity: 0;
+      @include transform(translateY(-15px));
+
+      input {
+        &.checkbox, &.radio {
+          padding: $button-padding*0.8 $button-padding/2 !important;
+          > .checkbox {
+            border: none !important;
+          }
+        }
+      }
+
+      button {
+        position: relative;
+        width: 100%;
+        display: block;
+        text-align: left;
+        white-space: nowrap;
+        font-size: $font-size-medium !important;
+        //font-weight: $font-weight-normal;
+      }
+
+    }
+  }
+
+}

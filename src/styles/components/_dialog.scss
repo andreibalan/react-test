@@ -1,0 +1,108 @@
+$dialog-min-width: 200px * $size-scale;
+$dialog-max-width: 500px * $size-scale;
+$dialog-overlay-opacity: 0.2;
+$dialog-box-padding: 25px * $size-scale;
+$dialog-overlay-z-index: 10000;
+
+.dialog-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 1;
+
+  z-index: $dialog-overlay-z-index;
+  will-change: transform;
+
+  background-color: transparent;
+  @include transition(all, 300ms, ease-in-out);
+
+  &.active {
+    background-color: rgba(0, 0, 0, 0.4);
+  }
+
+  .dialog {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    @include flex-container();
+    @include flex-align-items(center);
+    @include flex-justify-content(center);
+
+    @include breakpoint(small only) {
+      @include flex-align-items(inherit);
+      @include flex-justify-content(inherit);
+
+      .dialog-box {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-width: none !important;
+        width: 100% !important;
+      }
+    }
+
+    .dialog-box {
+      padding: $dialog-box-padding !important;
+      max-width: $dialog-max-width;
+      min-width: $dialog-min-width;
+
+      @include box-shadow(0, 1px * $size-scale, 20px * $size-scale, 0.5, false, 1px * $size-scale);
+
+      > .section {
+        &.header {
+          background-color: transparent !important;
+          font-size: $font-size-xlarge;
+          margin-bottom: 15px * $size-scale;
+          color: #4d4d4d;
+
+          > .title {
+            color: $color-text-title;
+            font-weight: $font-weight-bold;
+          }
+        }
+
+        &.body {
+          hr, > avatar-cropper > .cropper-container {
+            border-bottom: 1px solid $color-separator;
+            margin-left: -$dialog-box-padding;
+            margin-right: -$dialog-box-padding;
+          }
+        }
+
+        &.footer {
+          margin-top: 30px * $size-scale;
+        }
+      }
+    }
+  }
+}
+
+.dialog-leave {
+  opacity: 1;
+  @include transform(translateY(0px));
+}
+
+.dialog-leave.dialog-leave-active {
+  opacity: 0.01;
+  transition: all .3s ease-in-out;
+  @include transform(translateY(60px));
+  will-change: transform;
+}
+
+.dialog-enter, .dialog-appear {
+  opacity: 0.01;
+  @include transform(translateY(60px));
+}
+
+.dialog-appear.dialog-appear-active, .dialog-enter.dialog-enter-active {
+  opacity: 1;
+  transition: all .3s ease-in-out;
+  @include transform(translateY(0px));
+  will-change: transform;
+}

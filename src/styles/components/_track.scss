@@ -1,0 +1,237 @@
+$track-picture-size: 50px * $size-scale;
+$track-picture-background-color: $color-separator;
+$track-padding: 20px * $size-scale;
+$track-index-size: 40px * $size-scale;
+
+$player-spacing: 15px * $size-scale;
+$player-track-picture-size: 325px * $size-scale;
+$player-track-padding: 20px * $size-scale;
+
+.track {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  @include flex-container;
+  @include flex-direction(row);
+  @include flex-align-items(center);
+
+  &:hover, &.selected {
+    > .index {
+      > .info {
+        opacity: 0;
+      }
+
+      > .checkbox {
+        opacity: 1;
+      }
+    }
+  }
+
+  > .index {
+    position: relative;
+    @include flex-size(none);
+
+    font-size: $font-size-large;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    text-align: right;
+
+    width: $track-index-size;
+    min-width: $track-index-size;
+    max-width: $track-index-size;
+
+    margin-right: $track-padding;
+
+    > .info {
+    }
+
+    > .checkbox {
+      @include flex-container;
+      @include flex-align-items(center);
+      @include flex-justify-content(center);
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      opacity: 0;
+
+      font-size: 25px * $size-scale;
+    }
+  }
+
+  > .picture {
+    background-color: $track-picture-background-color;
+
+    > .placeholder {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      top: 0;
+
+      color: #000000;
+      font-size: $track-picture-size * 0.7;
+
+      @include flex-container;
+      @include flex-align-items(center);
+      @include flex-justify-content(center);
+    }
+
+    > img {
+      position: relative;
+      z-index: 2;
+
+      min-width: 100%;
+    }
+  }
+
+  > .picture, > progress {
+    position: relative;
+    @include flex-size(none);
+
+    min-width: $track-picture-size;
+    min-height: $track-picture-size;
+
+    max-width: $track-picture-size;
+    max-height: $track-picture-size;
+    margin-right: $track-padding;
+  }
+
+  > .content {
+    position: relative;
+    @include flex-size(1);
+
+    @include flex-container;
+    @include flex-direction(row);
+
+    margin-right: $track-padding;
+    padding: $track-padding 0;
+
+    border-bottom: 1px solid $color-separator;
+
+    @include transition(all, 300ms, ease-in-out);
+    will-change: transform;
+
+    > .container {
+      position: relative;
+      @include flex-size(1);
+
+      @include flex-container;
+      @include flex-direction(column);
+
+      margin-right: $track-padding;
+
+      > .name {
+        font-size: $font-size-large;
+        font-weight: $font-weight-bold;
+        margin-bottom: 5px * $size-scale;
+      }
+
+      > .artist {
+        font-weight: $font-weight-light;
+      }
+    }
+
+    > .vote {
+      position: relative;
+      @include flex-size(none);
+      font-weight: $font-weight-bold;
+      margin-right: $track-padding;
+    }
+
+    > .duration {
+      position: relative;
+      @include flex-size(none);
+      font-weight: $font-weight-bold;
+    }
+  }
+}
+
+.track {
+  @include flex-align-items(center);
+  @include flex-justify-content(center);
+  width: auto !important;
+
+  > .index, > .content > .duration, > .content > .vote {
+    display: none;
+  }
+
+  > .content {
+    border-bottom: 1px solid transparent !important;
+  }
+
+  @include breakpoint-height('( min-height: 750px)') {
+    @include flex-direction(column);
+
+    > .picture {
+      position: relative;
+      display: block;
+
+      cursor: pointer;
+
+      min-width: $player-track-picture-size;
+      min-height: $player-track-picture-size;
+
+      max-width: $player-track-picture-size;
+      max-height: $player-track-picture-size;
+
+      @include box-shadow(0, 0, 30px * $size-scale, 0.5);
+      @include transition(all, 300ms, ease-in-out);
+      will-change: transform;
+
+      margin-right: 0 !important;
+
+      &:hover {
+        @include box-shadow(0, 0, 60px * $size-scale, 0.5);
+        @include transform(scale(0.95));
+      }
+
+      > .placeholder {
+        font-size: $player-track-picture-size * 0.5;
+      }
+
+      @include breakpoint-height('( max-height: 900px)') {
+        min-width: $player-track-picture-size / 2;
+        min-height: $player-track-picture-size / 2;
+
+        max-width: $player-track-picture-size / 2;
+        max-height: $player-track-picture-size / 2;
+
+        > .placeholder {
+          font-size: $player-track-picture-size/2 * 0.5;
+        }
+      }
+    }
+
+    > .content {
+      position: relative;
+      display: block;
+
+      margin-top: $player-track-padding;
+      margin-right: 0 !important;
+
+      max-width: $player-track-picture-size * 2;
+
+      > .container {
+        text-align: center;
+
+        > .name {
+          font-weight: $font-weight-bold;
+          font-size: $font-size-xxlarge;
+          line-height: $font-size-xxlarge;
+        }
+
+        > .artist {
+          font-weight: $font-weight-light;
+          font-size: $font-size-medium;
+          margin-top: $player-track-padding /2;
+        }
+      }
+    }
+  }
+
+}

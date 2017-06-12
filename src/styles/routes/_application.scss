@@ -1,0 +1,66 @@
+$application-background-opacity: 0.5;
+$application-background-blur: 10px;
+$application-appbar-top-height: 121px * $size-scale;
+
+.application {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: white;
+
+  @include transition(all, 1000ms, ease-in-out);
+  @include flex-container;
+  @include flex-direction(column);
+
+  &.scrolled {
+    > .appbar {
+      background-color: rgba(0, 0, 0, 0.8) !important;
+    }
+  }
+
+  > .background {
+    position: absolute;
+    top: -$application-background-blur + -10px;
+    left: -$application-background-blur + -10px;
+    right: -$application-background-blur + -10px;
+    bottom: -$application-background-blur + -10px;
+
+    opacity: $application-background-opacity;
+
+    overflow: hidden;
+
+    filter: blur($application-background-blur);
+    -webkit-filter: blur($application-background-blur);
+
+    background-position: center center;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    @include transition(all, 1000ms, ease-in-out);
+
+    > img {
+
+    }
+  }
+
+  > .appbar {
+    min-height: $application-appbar-top-height;
+    max-height: $application-appbar-top-height;
+    @include transition(background, 200ms, ease-in-out);
+  }
+
+  > .section {
+    @include flex-size(1);
+  }
+
+}
+
+.column, .columns {
+  padding-right: 0;
+  padding-left: 0;
+}

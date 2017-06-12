@@ -1,0 +1,70 @@
+$section-content-padding: $padding;
+
+.section {
+  position: relative;
+  overflow: hidden;
+  color: inherit;
+
+  @include flex-container;
+  @include flex-direction(column);
+
+  > .tabbar {
+    flex: none !important;
+    @include transition(background, 200ms, ease-in-out);
+  }
+
+  > .content-wrapper {
+    position: relative;
+    @include flex-size(1);
+
+    @include flex-container;
+    @include flex-direction(column);
+
+    overflow: hidden;
+
+    > .ps-container {
+      position: relative;
+      will-change: transform;
+      -webkit-transform: translateZ(0);
+
+      @include flex-size(1);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      height: 10px;
+      width: 100%;
+
+      @include box-shadow(0, 0, 10px, 0.5);
+      @include transition(all, 300ms, ease-in-out);
+      will-change: transform;
+      z-index: 1;
+
+      opacity: 0;
+    }
+  }
+
+  &.padding {
+    > .content-wrapper {
+      > .content, > .ps-container > .content {
+        position: relative;
+        @include flex-size(1);
+
+        padding: $section-content-padding;
+      }
+    }
+  }
+
+  &.scrolled {
+    > .content-wrapper::before {
+      opacity: 1;
+    }
+
+    > .tabbar {
+      background-color: rgba(0, 0, 0, 0.8) !important;
+    }
+  }
+
+}

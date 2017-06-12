@@ -1,0 +1,111 @@
+$box-background-color: #ffffff;
+$box-padding: 15px * $size-scale;
+
+.box {
+  position: relative;
+  display: block;
+  background-color: rgba($box-background-color, 1);
+  color: $color-text-faded;
+
+  * {
+    color: inherit !important;
+  }
+
+  //border: 1px solid $color-separator;
+
+  @include box-shadow(0, 1px * $size-scale, 1px * $size-scale, 0.2, false, 1px * $size-scale);
+  @include border-radius(0px);
+
+  @include transition(box-shadow, 300ms, ease-in-out);
+
+  @include flex-container();
+  @include flex-direction(column);
+
+  &:not(.no-padding) {
+    > .section {
+      padding: $box-padding;
+    }
+  }
+
+  &.header-separator > .section.header {
+    border-bottom: 1px solid $color-separator;
+  }
+
+  &.footer-separator > .section.footer {
+    border-top: 1px solid $color-separator;
+  }
+
+  &:not(.header-light) {
+    > .section {
+      &.header {
+        background-color: $color-primary;
+        color: $color-text-dark;
+      }
+    }
+  }
+
+  &.no-body-padding > .body, &.no-header-padding > .header, &.no-footer-padding > .footer {
+    padding: 0 !important;
+  }
+
+  > .section {
+    position: relative;
+
+    &.header {
+    }
+
+    &.body {
+      font-size: $font-size-large;
+      line-height: $font-size-large;
+      padding-bottom: 5px * $size-scale;
+
+      @include flex-size(1);
+
+      .progress {
+        margin: 0 auto;
+
+        > .bar {
+          background: $color-text-faded !important;
+        }
+      }
+
+      > .content {
+
+        padding: $box-padding;
+      }
+    }
+
+    &.footer {
+
+    }
+  }
+
+  &[elevation="1"] {
+    @include box-shadow(0, 1px * $size-scale, 5px * $size-scale, 0.2, false, 1px * $size-scale);
+  }
+
+  &[elevation="2"] {
+    @include box-shadow(0, 1px * $size-scale, 10px * $size-scale, 0.2, false, 1px * $size-scale);
+  }
+
+  &[elevation="3"] {
+    @include box-shadow(0, 1px * $size-scale, 15px * $size-scale, 0.2, false, 1px * $size-scale);
+  }
+
+  &[elevation="4"] {
+    @include box-shadow(0, 1px * $size-scale, 20px * $size-scale, 0.2, false, 1px * $size-scale);
+  }
+
+  &[elevation="5"] {
+    @include box-shadow(0, 1px * $size-scale, 25px * $size-scale, 0.2, false, 1px * $size-scale);
+  }
+
+  a {
+    color: inherit;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+
+}

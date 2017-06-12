@@ -1,0 +1,35 @@
+$paragraf-icon-size: 20px * $size-scale;
+
+.paragraf {
+  position: relative;
+  display: block;
+
+  padding: 2px * $size-scale 0;
+
+  margin: 15px * $size-scale 0;
+
+  @include truncate();
+
+  &.left-icon {
+    padding-left: $paragraf-icon-size + 7px * $size-scale;
+  }
+
+  &.right-icon {
+    padding-right: $paragraf-icon-size + 7px * $size-scale;
+  }
+
+  > .icon {
+    position: absolute;
+    top: 0;
+
+    font-size: $paragraf-icon-size;
+
+    &.left {
+      left: 0;
+    }
+
+    &.right {
+      right: 0;
+    }
+  }
+}

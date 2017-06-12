@@ -1,0 +1,78 @@
+@-webkit-keyframes ripple {
+  100% {
+    opacity: 0;
+    @include transform(scale(2.5));
+  }
+}
+
+@-moz-keyframes ripple {
+  100% {
+    opacity: 0;
+    @include transform(scale(2.5));
+  }
+}
+
+@-o-keyframes ripple {
+  100% {
+    opacity: 0;
+    @include transform(scale(2.5));
+  }
+}
+
+@keyframes ripple {
+  100% {
+    opacity: 0;
+    @include transform(scale(2.5));
+  }
+}
+
+@-webkit-keyframes ripple-round {
+  100% {
+    opacity: 0;
+    @include transform(scale(1));
+  }
+}
+
+@-moz-keyframes ripple-round {
+  100% {
+    opacity: 0;
+    @include transform(scale(1));
+  }
+}
+
+@-o-keyframes ripple-round {
+  100% {
+    opacity: 0;
+    @include transform(scale(1));
+  }
+}
+
+@keyframes ripple-round {
+  100% {
+    opacity: 0;
+    @include transform(scale(1));
+  }
+}
+
+.ripple {
+  display: block;
+  position: absolute;
+  opacity: 0.3;
+  border-radius: 100%;
+
+  @include transform(scale(0));
+  @include animation(ripple 0.65s linear);
+  will-change: transform;
+
+  &.round {
+    @include animation(ripple-round 0.40s linear);
+  }
+
+  &.dark {
+    background: #000000;
+  }
+
+  &.light {
+    background-color: #ffffff;
+  }
+}

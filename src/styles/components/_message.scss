@@ -1,0 +1,86 @@
+$message-spacing: 5px * $size-scale;
+$message-botttom-padding: 100px * $size-scale;
+$message-icon-size: 40px * $size-scale;
+
+.message {
+  position: relative;
+  text-align: center;
+  width: 100%;
+
+  @include clearfix;
+  @include flex-container();
+  @include flex-direction(column);
+  @include disable-select;
+
+  &.center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    @include flex-align-items(center);
+    @include flex-justify-content(center);
+  }
+
+  &:not(.light) {
+    > .top {
+      border-bottom: none;
+    }
+  }
+
+  > .top {
+    position: relative;
+    @include flex-size(1);
+
+    > .image {
+      position: relative;
+      margin: 0 auto;
+    }
+  }
+
+  > .bottom {
+    position: relative;
+    @include flex-size(1);
+
+    padding: 0 $message-botttom-padding;
+
+    @include breakpoint(medium down) {
+      padding: 0 $message-botttom-padding / 2 !important;
+    }
+
+    > .icon {
+      font-size: $message-icon-size;
+      margin-bottom: $message-spacing * 5;
+    }
+
+    > .progress {
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: $message-spacing * 5;
+    }
+
+    > .progress-bar {
+      margin-top: $message-spacing * 5;
+      margin-left: 30%;
+      margin-right: 30%;
+    }
+
+    > .title {
+      font-weight: $font-weight-bold;
+      font-size: $font-size-xxlarge;
+      line-height: $font-size-xxlarge;
+      margin-bottom: $message-spacing;
+    }
+
+    > .description {
+      margin-bottom: $message-spacing * 5;
+    }
+
+    > .content {
+      margin: $message-spacing * 5 auto;
+      padding-top: $message-spacing * 5;
+    }
+  }
+
+}

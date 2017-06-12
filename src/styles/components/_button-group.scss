@@ -1,0 +1,37 @@
+.button-group {
+  position: relative;
+  margin: 0;
+
+  @include flex-container();
+
+  &:not(.force) {
+    @include breakpoint(small only) {
+      justify-content: center !important;
+      -webkit-justify-content: center !important;
+      @include flex-direction(column);
+
+      flex-direction: column !important;
+      -webkit-flex-direction: column !important;
+    }
+  }
+
+  &.right {
+    @include flex-justify-content(flex-end);
+  }
+
+  &.left {
+    @include flex-justify-content(flex-start);
+  }
+
+  &.center {
+    @include flex-justify-content(center);
+  }
+
+  &.row {
+    @include flex-direction(row);
+  }
+
+  &.column {
+    @include flex-direction(column);
+  }
+}

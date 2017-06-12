@@ -1,0 +1,33 @@
+
+.index-route {
+  > .content-wrapper > .content {
+    @include flex-container();
+    @include flex-justify-content(center);
+    @include flex-align-items(center);
+  }
+}
+
+
+.index-track-leave {
+  opacity: 1;
+  @include transform(translateX(0px));
+}
+
+.index-track-leave.index-track-leave-active {
+  opacity: 0.01;
+  transition: all .3s ease-in-out;
+  @include transform(translateX(-200px));
+  will-change: transform;
+}
+
+.index-track-enter, .index-track-appear {
+  opacity: 0.01;
+  @include transform(translateX(200px));
+}
+
+.index-track-appear.index-track-appear-active, .index-track-enter.index-track-enter-active {
+  opacity: 1;
+  transition: all .3s ease-in-out;
+  @include transform(translateX(0px));
+  will-change: transform;
+}
